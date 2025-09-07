@@ -267,6 +267,7 @@ for _ in range(4):
 ws.insert_cols(1)
 ws.cell(row=1, column=1, value="mi orden")
 # Elimina la primera fila (la fila 1, usualmente títulos)
+ws.auto_filter = None
 ws.delete_rows(1)
     
 # 5. Guardar el archivo como salida_david.xlsx
