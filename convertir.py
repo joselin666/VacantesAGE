@@ -67,8 +67,8 @@ for fila in hoja.iter_rows(values_only=True):  # values_only=True devuelve solo 
         if columna_salida == 6:
             # Extraer los últimos dígitos numéricos de la columna 6
             texto = celda if isinstance(celda, str) else ""
-            ultimos_numeros = ""
-            numeros = re.findall(r'\d+', texto)
+            ultimos_numeros = 0
+            numeros = re.findall(r'\d{5,}', texto)
             if numeros:
                 ultimos_numeros = numeros[-1]
             columna_salida += 1
@@ -295,6 +295,9 @@ for fila in ws.iter_rows():
     ws.row_dimensions[fila[0].row].height = max_lineas * 15  # 15 es un valor estándar por línea
 # Limitar el ancho de la columna k a 60
 ws.column_dimensions['K'].width = 60
+for fila in ws.iter_rows(min_row=1, max_row=ws.max_row, min_col=11, max_col=11):
+    for celda in fila:
+        celda.alignment = Alignment(horizontal='center', wrap_text=True)
             
 # Comprobar que el fichero de destino no está en uso antes de copiarlo
 destino = "salida_david.xlsx"

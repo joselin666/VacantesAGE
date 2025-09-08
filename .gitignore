@@ -3,3 +3,5 @@ age.ico
 auto-py-to-exe.json
 *.xlsm
 salida*.xlsx
+.gitignore
+VacantesAge.mp4
